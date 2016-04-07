@@ -25,5 +25,8 @@
   "contributors": [
     "Zeke Sikelianos <zeke@sikelianos.com> (http://zeke.sikelianos.com)"
   ],
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "socket.io": "^1.4.5"
+  }
 }
