@@ -1,4 +1,4 @@
-var socket = io.connect("http://localhost:8080")
+var socket = io.connect("http://socketio-nodejs.herokuapp.com:8080")
 $('#login_form').submit(function (event) {
   event.preventDefault()
   console.log("submit");
