@@ -1,7 +1,7 @@
 var http = require("http")
 var users;
 var user = {};
-var port = process.env.PORT || 8080;
+
 var express = require('express')
 var app = express()
 
