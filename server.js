@@ -4,6 +4,8 @@ var user = {};
 var port = process.env.PORT || 8080;
 httpServer = http.createServer(function (req,res) {
 
+  res.end('loool')
+
   console.log("Serveur Demmaré");
 
 
