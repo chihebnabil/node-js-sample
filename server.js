@@ -1,36 +1,32 @@
-var express = require('express')
-var app = express()
+var http = require('http');
+var fs = require('fs');
 
-app.set('port', (process.env.PORT || 5000))
-app.use(express.static(__dirname + '/public'))
+// Chargement du fichier index.html affiché au client
+var server = http.createServer(function(req, res) {
+    fs.readFile('./index.html', 'utf-8', function(error, content) {
+        res.writeHead(200, {"Content-Type": "text/html"});
+        res.end(content);
+    });
+});
 
-app.get('/', function(request, response) {
-  response.send('Hello World!')
-})
+// Chargement de socket.io
+var io = require('socket.io').listen(server);
 
-app.listen(app.get('port'), function() {
-  console.log("Node app is running at localhost:" + app.get('port'))
-})
+// Quand un client se connecte, on le note dans la console
+io.on('connection', function (socket) {
+  
+
+  socket.on('test', function (data) {
+    console.log(data);
+  });
+   socket.on('login', function (data) {
+    console.log(data);
+  });
 
 
 
-// var io = require("socket.io").listen(httpServer)
-//
-//
-// io.sockets.on("connection",function (socket) {
-//
-//   console.log("nouveau user");
-//
-//     socket.on("login",function (me) {
-//
-//
-//
-//       console.log(me);
-//       console.log('---------------------------');
-//
-//
-//
-//     socket.emit('logged')
-//
-//   })
-// })
+});
+
+
+
+server.listen(8080);
